@@ -1,3 +1,4 @@
+import {v4 as uuid } from "uuid";
 import { createSlice } from "@reduxjs/toolkit";
 
 const todosSlice = createSlice({
@@ -7,8 +8,14 @@ const todosSlice = createSlice({
   },
   reducers: {
     todoAdded(state, action) {
-      state.entities.push(action.payload);
+      state.entities.push({
+        id: uuid(),
+        text: action.payload});
     },
+    todoRemoved(state, action) {
+      const index = state.entities.findIndex((todo) => todo.id === action.payload);
+      state.entities.splice(index, 1);
+    }
   },
 });
 
