@@ -19,6 +19,6 @@ const todosSlice = createSlice({
   },
 });
 
-export const { todoAdded } = todosSlice.actions;
+export const { todoAdded, todoRemoved } = todosSlice.actions;
 
 export default todosSlice.reducer;
